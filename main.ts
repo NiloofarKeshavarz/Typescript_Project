@@ -1,30 +1,49 @@
-// function log(message){
-//     console.log(message);
+// let message ;
+// message = 'Niloofar';
 
-// };
-
-// var message = 'Hello World';
-// log(message);
-
-//====================================
-
-// function doSth(){
-//     for (var i =0 ; i <5 ; i++){
-//         console.log(i);
-//     }
-//     console.log("Finally " + i);
-       
-// };
-// doSth();
-
-let a : number;
-a = 1;
-let b :boolean;
-let c : string;
-let d :number[];
-let e :any;
+// let endsWithR = (<string>message).endsWith('r');
+// let includes = (message as string).includes('b');
 
 
-enum Color {Red =0 , Green = 1 , Blue = 2, Purple = 3}; //best practice to add numbers for furthur modification
-let backgroundColor = Color.Green;
-console.log(a);
+// interface Point{  // this is a customed type  = Paskal naming
+//     x: number,
+//     y: number
+// }
+// let drawPoint = (point :Point) => {
+
+// } 
+
+//Cohesion violation^^^^^^^^
+
+//how resolve it : Class
+class Point2 {
+
+    // x: number;
+    // y : number;
+
+    constructor(private _x: number=0 , private _y: number =0){ //using private in front of the params will create this.x =x ,...
+        // this.x = x;
+        // this.y = y;
+    }
+
+    draw(){
+        console.log('x1 =' +this._x + ' and y2= ' + this._y);
+    }
+    getDistance(){
+        //...
+    }
+    get x(){ // these get and set called properties for READ_ONLY and SETIING_VALUE purposes 
+        return this.x;
+    }
+    set x(value){
+        if(value < 0)
+            throw new Error('value not less than 0');
+            this.x = value;
+        
+    }
+}
+
+let point = new Point2();
+point.x = 10;
+point.draw();
+ 
